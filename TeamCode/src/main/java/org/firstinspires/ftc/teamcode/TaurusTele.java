@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -12,25 +13,21 @@ public class TaurusTele extends OpMode{
 
     TaurusHardwareMap robot = new TaurusHardwareMap();
 
+    float leftside, rightside;
+
     @Override
     public void init(){
 
         robot.init(hardwareMap);
     }
 
-    float leftside;
-    float rightside;
-
     @Override
     public void loop(){
 
-        leftside = gamepad1.right_stick_y;
-        rightside = gamepad1.left_stick_y;
+        rightside = gamepad1.right_stick_y;
+        leftside = gamepad1.left_stick_y;
 
-        robot.rightFrontMotor.setPower(rightside);
-        robot.leftFrontMotor.setPower(leftside);
-        robot.rightBackMotor.setPower(rightside);
-        robot.leftBackMotor.setPower(leftside);
+        robot.driveControls();
 
     }
 

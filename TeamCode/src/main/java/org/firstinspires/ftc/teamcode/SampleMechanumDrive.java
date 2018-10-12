@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /**
@@ -10,6 +12,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  */
 
 //Classify program as Teleop
+@Disabled
 @TeleOp(name="Mechanium")
 public class SampleMechanumDrive extends OpMode{
 
@@ -22,6 +25,9 @@ public class SampleMechanumDrive extends OpMode{
         leftMotor = hwMap.dcMotor.get("lf");
         BackrightMotor = hwMap.dcMotor.get("rb");
         BackleftMotor = hwMap.dcMotor.get("lb");
+
+        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        BackleftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
 //Declare Vairiables for speed control
@@ -61,10 +67,10 @@ public class SampleMechanumDrive extends OpMode{
 //If movement is not being overridden then follow speed controls
         else {
 
-            rightMotor.setPower(speed2);
-            BackrightMotor.setPower(speed2);
-            leftMotor.setPower(speed1);
-            BackleftMotor.setPower(speed1);
+            rightMotor.setPower(speed1);
+            BackrightMotor.setPower(speed1);
+            leftMotor.setPower(speed2);
+            BackleftMotor.setPower(speed2);
         }
     }
 

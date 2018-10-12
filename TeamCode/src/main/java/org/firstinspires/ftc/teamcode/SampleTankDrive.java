@@ -1,12 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 /**
  * Created by Dyllan Tinoco on 9/7/2018.
  */
-
+@Disabled
 @TeleOp(name="Teleop")
 public class SampleTankDrive extends OpMode{
 
