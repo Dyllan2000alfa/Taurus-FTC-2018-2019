@@ -1,15 +1,15 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 /**
- * Created by Dyllan Tinoco on 9/7/2018.
+ * Created by Dyllan Tinoco on 10/18/2018.
  */
 
-@TeleOp(name="TaurusTeleop")
-public class TaurusTele extends OpMode{
+//This is a test program used for operating the robot with a single controller
+@TeleOp(name="TaurusTeleopTest")
+public class TaurusTeleTest extends OpMode{
 
     TaurusHardwareMap robot = new TaurusHardwareMap();
 
@@ -29,7 +29,8 @@ public class TaurusTele extends OpMode{
 
         robot.driveControls();
 
-        robot.armMotor.setPower(gamepad2.left_stick_y);
+        robot.armMotor.setPower(gamepad1.right_trigger);
+        robot.armMotor.setPower(-gamepad1.left_trigger);
 
     }
 
