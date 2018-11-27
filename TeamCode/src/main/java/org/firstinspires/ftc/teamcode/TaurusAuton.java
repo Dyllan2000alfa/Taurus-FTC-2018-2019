@@ -21,6 +21,14 @@ public class TaurusAuton extends LinearOpMode{
 
         waitForStart();
 
+        //dropdown//
+
+        //color sensor/push cube//
+
+        //drop mech//
+
+        //crater//
+
         robot.stopMotors();
 
         telemetry.addData("Path", "Complete");
