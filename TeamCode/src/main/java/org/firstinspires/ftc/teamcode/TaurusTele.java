@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 /**
  * Created by Dyllan Tinoco on 9/7/2018.
- * Edited by Logan Yates on 11/28/18
  */
 
 @TeleOp(name="TaurusTeleop")
@@ -34,8 +33,7 @@ public class TaurusTele extends OpMode{
         robot.leftBackMotor.setPower(leftside);
 
         robot.armMotor.setPower(gamepad2.left_stick_y);
-        robot.rightIntakeMotor.setPower(gamepad2.right_stick_y);
-        robot.leftIntakeMotor.setPower(gamepad2.right_stick_y);
+        robot.intakeMotor.setPower(gamepad2.right_stick_y);
 
     }
 
