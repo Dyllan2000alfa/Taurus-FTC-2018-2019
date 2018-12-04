@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 /**
  * Created by Dyllan Tinoco on 9/7/2018.
@@ -18,12 +17,16 @@ public class TaurusTele extends OpMode{
     @Override
     public void init(){
 
+        //Calls the hardwareMap method.
         robot.init(hardwareMap);
     }
 
     @Override
     public void loop(){
 
+        //Assigns motors to gamepad controls.
+
+        //Drive controls.
         rightside = gamepad1.right_stick_y;
         leftside = gamepad1.left_stick_y;
 
@@ -32,11 +35,14 @@ public class TaurusTele extends OpMode{
         robot.rightBackMotor.setPower(rightside);
         robot.leftBackMotor.setPower(leftside);
 
+        //Operator controls.
         robot.armMotor.setPower(gamepad2.left_stick_y);
-        robot.intakeMotor.setPower(gamepad2.right_stick_y);
+        robot.rightIntakeMotor.setPower(gamepad2.right_stick_y);
+        robot.leftIntakeMotor.setPower(gamepad2.right_stick_y);
 
     }
 
+    //Stops robot.
     @Override
     public void stop(){
     }

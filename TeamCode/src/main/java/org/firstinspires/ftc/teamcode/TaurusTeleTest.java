@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  * Created by Dyllan Tinoco on 10/18/2018.
  */
 
-//This is a test program used for operating the robot with a single controller
+//This is a test program used for operating the robot with a single controller.
 @TeleOp(name="TaurusTeleopTest")
 public class TaurusTeleTest extends OpMode{
 
@@ -18,12 +18,16 @@ public class TaurusTeleTest extends OpMode{
     @Override
     public void init(){
 
+        //Calls the hardwareMap method.
         robot.init(hardwareMap);
     }
 
     @Override
     public void loop(){
 
+        //Assigns motors to gamepad controls.
+
+        //Drive controls.
         rightside = gamepad1.right_stick_y;
         leftside = gamepad1.left_stick_y;
 
@@ -32,11 +36,12 @@ public class TaurusTeleTest extends OpMode{
         robot.rightBackMotor.setPower(rightside);
         robot.leftBackMotor.setPower(leftside);
 
-        robot.armMotor.setPower(gamepad1.right_trigger);
-        robot.armMotor.setPower(-gamepad1.left_trigger);
+        //Operator controls.
+        robot.armMotor.setPower(gamepad2.left_stick_y);
 
     }
 
+    //Stops robot.
     @Override
     public void stop(){
     }
