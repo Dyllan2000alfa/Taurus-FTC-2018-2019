@@ -27,6 +27,16 @@ public class TaurusAuton2 extends LinearOpMode {
 
         //dropdown
 
+        //drive
+        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+        robot.rightFrontMotor.setPower(-1);
+        robot.rightBackMotor.setPower(-1);
+        robot.leftFrontMotor.setPower(-1);
+        robot.leftBackMotor.setPower(-1);
+
         //color sensor/push cube
 
         //drop mech
