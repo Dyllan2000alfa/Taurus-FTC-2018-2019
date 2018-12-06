@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Logan Yates on 10/13/2018.
  */
 
+//This is the Autonomous code we will use if we start in the blue corner closest to the crater.
 @Autonomous
 public class TaurusAuton extends LinearOpMode{
 

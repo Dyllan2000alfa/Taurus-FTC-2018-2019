@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Logan Yates on 12/5/2018.
  */
 
+//This is the Autonomous code we will use if we start in the blue corner closest to the "base"
 @Autonomous
 public class TaurusAuton2 extends LinearOpMode {
 
