@@ -39,12 +39,14 @@ public class TaurusAuton2 extends LinearOpMode {
             telemetry.update();
         }
 
-        robot.rightFrontMotor.setPower(0);
-        robot.rightBackMotor.setPower(0);
-        robot.leftFrontMotor.setPower(0);
-        robot.leftBackMotor.setPower(0);
+        robot.stopMotors();
         sleep(1000);
 
+        //drop mech
+        robot.dropServo.setPosition(180);
+        robot.dropServo.setPosition(0);
+
+        //crater
         robot.rightFrontMotor.setPower(.5);
         robot.rightBackMotor.setPower(.5);
         robot.leftFrontMotor.setPower(-.5);
@@ -55,27 +57,15 @@ public class TaurusAuton2 extends LinearOpMode {
             telemetry.update();
         }
 
-        robot.rightFrontMotor.setPower(0);
-        robot.rightBackMotor.setPower(0);
-        robot.leftFrontMotor.setPower(0);
-        robot.leftBackMotor.setPower(0);
-        sleep(1000);
-
-        //color sensor/push cube
-
-        //drop mech
-        robot.dropServo.setPosition(180);
-        robot.dropServo.setPosition(0);
-
-        //crater//
-        while (opModeIsActive() && (runtime.seconds() < 27.0)) {
-            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
         robot.rightFrontMotor.setPower(1);
         robot.rightBackMotor.setPower(1);
         robot.leftFrontMotor.setPower(1);
         robot.leftBackMotor.setPower(1);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
 
         robot.stopMotors();
 

@@ -39,10 +39,7 @@ public class TaurusAuton extends LinearOpMode{
             telemetry.update();
         }
 
-        robot.rightFrontMotor.setPower(0);
-        robot.rightBackMotor.setPower(0);
-        robot.leftFrontMotor.setPower(0);
-        robot.leftBackMotor.setPower(0);
+        robot.stopMotors();
         sleep(1000);
 
         robot.rightFrontMotor.setPower(.5);
@@ -55,28 +52,71 @@ public class TaurusAuton extends LinearOpMode{
             telemetry.update();
         }
 
-        robot.rightFrontMotor.setPower(0);
-        robot.rightBackMotor.setPower(0);
-        robot.leftFrontMotor.setPower(0);
-        robot.leftBackMotor.setPower(0);
+        robot.stopMotors();
         sleep(1000);
 
-        //color sensor/push cube
+        robot.rightFrontMotor.setPower(1);
+        robot.rightBackMotor.setPower(1);
+        robot.leftFrontMotor.setPower(1);
+        robot.leftBackMotor.setPower(1);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.stopMotors();
+        sleep(1000);
+
+        robot.rightFrontMotor.setPower(-.5);
+        robot.rightBackMotor.setPower(-.5);
+        robot.leftFrontMotor.setPower(.5);
+        robot.leftBackMotor.setPower(.5);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.stopMotors();
+
+        robot.rightFrontMotor.setPower(1);
+        robot.rightBackMotor.setPower(1);
+        robot.leftFrontMotor.setPower(1);
+        robot.leftBackMotor.setPower(1);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.stopMotors();
+        sleep(1000);
 
         //drop mech
         robot.dropServo.setPosition(180);
         robot.dropServo.setPosition(0);
 
-        //crater//
+        //crater
+        robot.rightFrontMotor.setPower(-.5);
+        robot.rightBackMotor.setPower(-.5);
+        robot.leftFrontMotor.setPower(.5);
+        robot.leftBackMotor.setPower(.5);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.rightFrontMotor.setPower(1);
+        robot.rightBackMotor.setPower(1);
+        robot.leftFrontMotor.setPower(1);
+        robot.leftBackMotor.setPower(1);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 2.0)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
-        robot.rightFrontMotor.setPower(1);
-        robot.rightBackMotor.setPower(1);
-        robot.leftFrontMotor.setPower(1);
-        robot.leftBackMotor.setPower(1);
 
         robot.stopMotors();
 

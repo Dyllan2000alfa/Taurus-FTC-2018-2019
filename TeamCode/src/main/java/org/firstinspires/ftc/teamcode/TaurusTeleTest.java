@@ -37,7 +37,6 @@ public class TaurusTeleTest extends OpMode{
         robot.leftBackMotor.setPower(leftside);
 
         //Operator controls.
-        robot.armMotor.setPower(gamepad2.left_stick_y);
 
     }
 
