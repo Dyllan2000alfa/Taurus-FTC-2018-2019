@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Logan Yates on 10/13/2018.
  */
 
-//This is the Autonomous code we will use if we start in the blue corner closest to the crater.
+//This is the Autonomous code we will use if we start closest to a crater.
 @Autonomous
 public class TaurusAuton extends LinearOpMode{
 
@@ -29,14 +29,38 @@ public class TaurusAuton extends LinearOpMode{
         //dropdown
 
         //drive
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
-            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
-            telemetry.update();
-        }
         robot.rightFrontMotor.setPower(-1);
         robot.rightBackMotor.setPower(-1);
         robot.leftFrontMotor.setPower(-1);
         robot.leftBackMotor.setPower(-1);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.rightFrontMotor.setPower(0);
+        robot.rightBackMotor.setPower(0);
+        robot.leftFrontMotor.setPower(0);
+        robot.leftBackMotor.setPower(0);
+        sleep(1000);
+
+        robot.rightFrontMotor.setPower(.5);
+        robot.rightBackMotor.setPower(.5);
+        robot.leftFrontMotor.setPower(-.5);
+        robot.leftBackMotor.setPower(-.5);
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.rightFrontMotor.setPower(0);
+        robot.rightBackMotor.setPower(0);
+        robot.leftFrontMotor.setPower(0);
+        robot.leftBackMotor.setPower(0);
+        sleep(1000);
+
         //color sensor/push cube
 
         //drop mech
@@ -44,6 +68,15 @@ public class TaurusAuton extends LinearOpMode{
         robot.dropServo.setPosition(0);
 
         //crater//
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 2.0)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+        robot.rightFrontMotor.setPower(1);
+        robot.rightBackMotor.setPower(1);
+        robot.leftFrontMotor.setPower(1);
+        robot.leftBackMotor.setPower(1);
 
         robot.stopMotors();
 

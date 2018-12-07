@@ -12,8 +12,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class TaurusHardwareMap {
 
     //Defines motors and servos so they can be used in the hardware map.
-    DcMotor rightFrontMotor, leftFrontMotor, rightBackMotor, leftBackMotor, armMotor, rightIntakeMotor, leftIntakeMotor;
-    Servo dropServo;
+    DcMotor rightFrontMotor, leftFrontMotor, rightBackMotor, leftBackMotor, armMotor;
+    Servo dropServo, rightIntakeServo, leftIntakeServo;
 
     public void init(HardwareMap hwMap) {
 
@@ -23,15 +23,14 @@ public class TaurusHardwareMap {
         rightBackMotor = hwMap.dcMotor.get("rb");
         leftBackMotor = hwMap.dcMotor.get("lb");
         armMotor = hwMap.dcMotor.get("am");
-        rightIntakeMotor = hwMap.dcMotor.get("ri");
-        leftIntakeMotor = hwMap.dcMotor.get("li");
 
+        rightIntakeServo = hwMap.servo.get("ri");
+        leftIntakeServo = hwMap.servo.get("li");
         dropServo = hwMap.servo.get("ds");
 
         //Reverses direction of certain motors so they don't go in the opposite direction.
         leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftIntakeMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //Sets power of motors to 0 so we are sure nothing is moving upon initialization.
         rightFrontMotor.setPower(0);
@@ -39,8 +38,6 @@ public class TaurusHardwareMap {
         rightBackMotor.setPower(0);
         leftBackMotor.setPower(0);
         armMotor.setPower(0);
-        rightIntakeMotor.setPower(0);
-        leftIntakeMotor.setPower(0);
 
     }
 
@@ -52,8 +49,6 @@ public class TaurusHardwareMap {
         rightBackMotor.setPower(0);
         leftBackMotor.setPower(0);
         armMotor.setPower(0);
-        rightIntakeMotor.setPower(0);
-        leftIntakeMotor.setPower(0);
 
     }
 

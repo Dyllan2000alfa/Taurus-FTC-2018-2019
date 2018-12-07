@@ -37,8 +37,8 @@ public class TaurusTele extends OpMode{
 
         //Operator controls.
         robot.armMotor.setPower(gamepad2.left_stick_y);
-        robot.rightIntakeMotor.setPower(gamepad2.right_stick_y);
-        robot.leftIntakeMotor.setPower(gamepad2.right_stick_y);
+        robot.rightIntakeServo.setPosition(gamepad2.right_stick_y);
+        robot.leftIntakeServo.setPosition(-gamepad2.right_stick_y);
 
     }
 
