@@ -30,6 +30,7 @@ public class TaurusHardwareMap {
         rightBackMotor = hwMap.dcMotor.get("rb");
         leftBackMotor = hwMap.dcMotor.get("lb");
         armMotor = hwMap.dcMotor.get("am");
+
         dropServo = hwMap.servo.get("ds");
 
         //Set motors to reverse so all motors turn the same direction.
