@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by Dyllan on 9/13/2018.
+ * Created by Dyllan Tinoco on 9/13/2018.
  */
 
 //Hardware map used by all codes for Taurus FTC 11025.
@@ -17,7 +17,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class TaurusHardwareMap {
 
     //Add all motors and variables used by any program.
-    DcMotor rightFrontMotor, leftFrontMotor, rightBackMotor, leftBackMotor, armMotor;
+    DcMotor rightMotor, leftMotor, armMotor;
     Servo dropServo;
     double leftPower = 0, rightPower = 0, armPower = 0, speed = 1;
 
@@ -25,71 +25,55 @@ public class TaurusHardwareMap {
     public void init(HardwareMap hwMap) {
 
         //Specify names of all motors as seen by phones.
-        rightFrontMotor = hwMap.dcMotor.get("rf");
-        leftFrontMotor = hwMap.dcMotor.get("lf");
-        rightBackMotor = hwMap.dcMotor.get("rb");
-        leftBackMotor = hwMap.dcMotor.get("lb");
+        rightMotor = hwMap.dcMotor.get("rm");
+        leftMotor = hwMap.dcMotor.get("lm");
         armMotor = hwMap.dcMotor.get("am");
 
         dropServo = hwMap.servo.get("ds");
 
         //Set motors to reverse so all motors turn the same direction.
-        rightFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //Ensure all motors are set to zero power.
-        rightFrontMotor.setPower(0);
-        leftFrontMotor.setPower(0);
-        rightBackMotor.setPower(0);
-        leftBackMotor.setPower(0);
+        rightMotor.setPower(0);
+        leftMotor.setPower(0);
         armMotor.setPower(0);
     }
 
     //Function in charge of moving motors in TeleOp.
     public void driveControls() {
 
-        rightFrontMotor.setPower(rightPower);
-        leftFrontMotor.setPower(leftPower);
-        rightBackMotor.setPower(rightPower);
-        leftBackMotor.setPower(leftPower);
-
+        rightMotor.setPower(rightPower);
+        leftMotor.setPower(leftPower);
         armMotor.setPower(armPower);
     }
 
     //Function to move robot forward at set speed.
     public void moveForward() {
 
-        rightFrontMotor.setPower(-speed);
-        leftFrontMotor.setPower(-speed);
-        rightBackMotor.setPower(-speed);
-        leftBackMotor.setPower(-speed);
+        rightMotor.setPower(-speed);
+        leftMotor.setPower(-speed);
     }
 
     //Function to move robot backward at set  speed.
     public void moveBackward() {
 
-        rightFrontMotor.setPower(speed);
-        leftFrontMotor.setPower(speed);
-        rightBackMotor.setPower(speed);
-        leftBackMotor.setPower(speed);
+        rightMotor.setPower(speed);
+        leftMotor.setPower(speed);
     }
 
     //Function to turn robot right at set speed
     public void turnRight() {
 
-        rightFrontMotor.setPower(speed);
-        leftFrontMotor.setPower(-speed);
-        rightBackMotor.setPower(speed);
-        leftBackMotor.setPower(-speed);
+        rightMotor.setPower(speed);
+        leftMotor.setPower(-speed);
     }
 
     //Function to turn robot left at set speed
     public void turnLeft() {
 
-        rightFrontMotor.setPower(-speed);
-        leftFrontMotor.setPower(speed);
-        rightBackMotor.setPower(-speed);
-        leftBackMotor.setPower(speed);
+        rightMotor.setPower(-speed);
+        leftMotor.setPower(speed);
     }
 
     //Function to move arm up at set speed
@@ -107,10 +91,8 @@ public class TaurusHardwareMap {
     //Function to stop all motors
     public void stopMotors() {
 
-        rightFrontMotor.setPower(0);
-        leftFrontMotor.setPower(0);
-        rightBackMotor.setPower(0);
-        leftBackMotor.setPower(0);
+        rightMotor.setPower(0);
+        leftMotor.setPower(0);
         armMotor.setPower(0);
     }
 
