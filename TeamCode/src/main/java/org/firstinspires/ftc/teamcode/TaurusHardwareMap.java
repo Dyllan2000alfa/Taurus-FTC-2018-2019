@@ -3,8 +3,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
@@ -17,7 +15,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class TaurusHardwareMap {
 
     //Add all motors and variables used by any program.
-    DcMotor rightMotor, leftMotor, armMotor;
+    DcMotor rightMotor, leftMotor;
     Servo dropServo;
     double leftPower = 0, rightPower = 0, armPower = 0, speed = 1;
 
@@ -27,7 +25,6 @@ public class TaurusHardwareMap {
         //Specify names of all motors as seen by phones.
         rightMotor = hwMap.dcMotor.get("rm");
         leftMotor = hwMap.dcMotor.get("lm");
-        armMotor = hwMap.dcMotor.get("am");
 
         dropServo = hwMap.servo.get("ds");
 
@@ -37,7 +34,6 @@ public class TaurusHardwareMap {
         //Ensure all motors are set to zero power.
         rightMotor.setPower(0);
         leftMotor.setPower(0);
-        armMotor.setPower(0);
     }
 
     //Function in charge of moving motors in TeleOp.
@@ -45,7 +41,6 @@ public class TaurusHardwareMap {
 
         rightMotor.setPower(rightPower);
         leftMotor.setPower(leftPower);
-        armMotor.setPower(armPower);
     }
 
     //Function to move robot forward at set speed.
@@ -76,24 +71,11 @@ public class TaurusHardwareMap {
         leftMotor.setPower(speed);
     }
 
-    //Function to move arm up at set speed
-    public void armUp() {
-
-        armMotor.setPower(speed);
-    }
-
-    //Function to move arm down at set speed
-    public void armDown() {
-
-        armMotor.setPower(-speed);
-    }
-
     //Function to stop all motors
     public void stopMotors() {
 
         rightMotor.setPower(0);
         leftMotor.setPower(0);
-        armMotor.setPower(0);
     }
 
 }

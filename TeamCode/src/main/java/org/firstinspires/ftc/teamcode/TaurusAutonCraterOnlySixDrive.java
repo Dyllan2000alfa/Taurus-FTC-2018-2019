@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous
-public class TaurusAutonCraterSixDrive extends LinearOpMode{
+public class TaurusAutonCraterOnlySixDrive extends LinearOpMode{
 
     TaurusHardwareMap robot = new TaurusHardwareMap();
     private ElapsedTime runtime = new ElapsedTime();

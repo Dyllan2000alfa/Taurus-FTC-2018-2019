@@ -30,7 +30,6 @@ public class TaurusTele extends OpMode{
         //Mapping of controller to motor variables.
         robot.rightPower = gamepad1.right_stick_y;
         robot.leftPower = gamepad1.left_stick_y;
-        robot.armPower = gamepad2.left_stick_y;
 
         //Run driveControls() function from hardware map. Contains code for moving motors.
         robot.driveControls();
@@ -39,7 +38,6 @@ public class TaurusTele extends OpMode{
         telemetry.addData("Right Power", robot.rightPower);
         telemetry.addData("Left Power", robot.leftPower);
         telemetry.addLine();
-        telemetry.addData("Arm Power", robot.armPower);
         telemetry.update();
     }
 
