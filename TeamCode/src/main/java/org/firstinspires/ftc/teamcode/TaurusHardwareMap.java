@@ -9,19 +9,22 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by Dyllan Tinoco on 9/13/2018.
  */
 
-//Hardware map used by all codes for Taurus FTC 11025.
-
-//Declare public class
 public class TaurusHardwareMap {
 
+<<<<<<< HEAD
     //Add all motors and variables used by any program.
     DcMotor rightMotor, leftMotor, linearMotion;
     Servo dropServo;
     double leftPower = 0, rightPower = 0, linearPower = 0, speed = 1;
+=======
+    //Defines motors and servos so they can be used in the hardware map.
+    DcMotor rightFrontMotor, leftFrontMotor, rightBackMotor, leftBackMotor, armMotor;
+    Servo dropServo, rightIntakeServo, leftIntakeServo;
+>>>>>>> parent of 109976a... Added Autons and updated ftc app
 
-    //Specify what to run when initializing hardware map.
     public void init(HardwareMap hwMap) {
 
+<<<<<<< HEAD
         //Specify names of all motors as seen by phones.
         rightMotor = hwMap.dcMotor.get("rm");
         leftMotor = hwMap.dcMotor.get("lm");
@@ -71,14 +74,47 @@ public class TaurusHardwareMap {
 
         rightMotor.setPower(speed);
         leftMotor.setPower(-speed);
+=======
+        //Defines each individual motor and servo so they can be used in TeleOp and Auton.
+        rightFrontMotor = hwMap.dcMotor.get("rf");
+        leftFrontMotor = hwMap.dcMotor.get("lf");
+        rightBackMotor = hwMap.dcMotor.get("rb");
+        leftBackMotor = hwMap.dcMotor.get("lb");
+        armMotor = hwMap.dcMotor.get("am");
+
+        rightIntakeServo = hwMap.servo.get("ri");
+        leftIntakeServo = hwMap.servo.get("li");
+        dropServo = hwMap.servo.get("ds");
+
+        //Reverses direction of certain motors so they don't go in the opposite direction.
+        leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        //Sets power of motors to 0 so we are sure nothing is moving upon initialization.
+        rightFrontMotor.setPower(0);
+        leftFrontMotor.setPower(0);
+        rightBackMotor.setPower(0);
+        leftBackMotor.setPower(0);
+        armMotor.setPower(0);
+
+>>>>>>> parent of 109976a... Added Autons and updated ftc app
     }
 
-    //Function to stop all motors
     public void stopMotors() {
 
+<<<<<<< HEAD
         rightMotor.setPower(0);
         leftMotor.setPower(0);
         linearMotion.setPower(0);
+=======
+        //Makes sure all motors have no power when the robot finishes the code.
+        rightFrontMotor.setPower(0);
+        leftFrontMotor.setPower(0);
+        rightBackMotor.setPower(0);
+        leftBackMotor.setPower(0);
+        armMotor.setPower(0);
+
+>>>>>>> parent of 109976a... Added Autons and updated ftc app
     }
 
 }

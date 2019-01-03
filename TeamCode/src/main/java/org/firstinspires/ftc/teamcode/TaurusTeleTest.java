@@ -8,46 +8,41 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  */
 
 //This is a test program used for operating the robot with a single controller.
-
-//Specify OpMode and Name.
-@TeleOp(name="Taurus Teleop (1 Controller)")
+@TeleOp(name="TaurusTeleopTest")
 public class TaurusTeleTest extends OpMode{
 
-    //Specify hardware map file.
     TaurusHardwareMap robot = new TaurusHardwareMap();
 
-    //Initialize HardwareMap.
+    float leftside, rightside;
+
     @Override
     public void init(){
 
+        //Calls the hardwareMap method.
         robot.init(hardwareMap);
     }
 
-    //Loop code until stop is pressed.
     @Override
     public void loop(){
 
-        //Mapping of controller to motor variables.
-        robot.rightPower = gamepad1.right_stick_y;
-        robot.leftPower = gamepad1.left_stick_y;
-        robot.armPower = gamepad1.left_trigger - gamepad1.right_trigger;
+        //Assigns motors to gamepad controls.
 
-        //Run driveControls() function from hardware map. Contains code for moving motors.
-        robot.driveControls();
+        //Drive controls.
+        rightside = gamepad1.right_stick_y;
+        leftside = gamepad1.left_stick_y;
 
-        //Telemetry data. Displays the power that each variable involved in motors is set too.
-        telemetry.addData("Right Power", robot.rightPower);
-        telemetry.addData("Left Power", robot.leftPower);
-        telemetry.addLine();
-        telemetry.addData("Arm Power", robot.armPower);
-        telemetry.update();
+        robot.rightFrontMotor.setPower(rightside);
+        robot.leftFrontMotor.setPower(leftside);
+        robot.rightBackMotor.setPower(rightside);
+        robot.leftBackMotor.setPower(leftside);
+
+        //Operator controls.
+
     }
 
-    //Stop loop and run robot.stopMotors() to make sure no motors keep running.
+    //Stops robot.
     @Override
     public void stop(){
-
-        robot.stopMotors();
     }
 
 }
