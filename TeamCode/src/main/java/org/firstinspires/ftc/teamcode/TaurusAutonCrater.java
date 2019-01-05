@@ -4,12 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-/**
- * Created by Logan Yates on 12/5/18.
- */
-
 @Autonomous
-public class TaurusAutonBaseSixDrive extends LinearOpMode{
+public class TaurusAutonCrater extends LinearOpMode{
 
     TaurusHardwareMap robot = new TaurusHardwareMap();
     private ElapsedTime runtime = new ElapsedTime();
@@ -24,11 +20,9 @@ public class TaurusAutonBaseSixDrive extends LinearOpMode{
 
         waitForStart();
 
-        robot.speed = 0.25;
-
-        robot.moveBackward();
+        robot.liftUp();
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 5.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 9.0)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
@@ -36,9 +30,29 @@ public class TaurusAutonBaseSixDrive extends LinearOpMode{
         robot.stopMotors();
         sleep(1000);
 
-        robot.dropServo.setPosition(0);
+        robot.moveForward();
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 1.0)) {
+        while (opModeIsActive() && (runtime.seconds() < 0.5)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.stopMotors();
+        sleep(1000);
+
+        robot.liftDown();
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 9.0)) {
+            telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+
+        robot.stopMotors();
+        sleep(1000);
+
+        robot.moveForward();
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 3.5)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
         }
