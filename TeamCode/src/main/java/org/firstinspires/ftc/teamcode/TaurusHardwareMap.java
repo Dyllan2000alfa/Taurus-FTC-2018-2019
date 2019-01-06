@@ -32,7 +32,7 @@ public class TaurusHardwareMap {
         dropServo = hwMap.servo.get("ds");
 
         //Set motors to reverse so all motors turn the same direction.
-        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //Ensure all motors are set to zero power.
         rightMotor.setPower(0);
@@ -66,15 +66,15 @@ public class TaurusHardwareMap {
     //Function to turn robot right at set speed
     public void turnRight() {
 
-        rightMotor.setPower(speed);
-        leftMotor.setPower(-speed);
+        rightMotor.setPower(-speed);
+        leftMotor.setPower(speed);
     }
 
     //Function to turn robot left at set speed
     public void turnLeft() {
 
-        rightMotor.setPower(-speed);
-        leftMotor.setPower(speed);
+        rightMotor.setPower(speed);
+        leftMotor.setPower(-speed);
     }
 
     //Function to move arm up at quarter speed
