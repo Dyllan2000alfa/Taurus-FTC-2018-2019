@@ -4,6 +4,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+/**
+ * Created by Logan Yates on 12/5/18.
+ */
+
 @Autonomous
 public class TaurusAutonCrater extends LinearOpMode{
 

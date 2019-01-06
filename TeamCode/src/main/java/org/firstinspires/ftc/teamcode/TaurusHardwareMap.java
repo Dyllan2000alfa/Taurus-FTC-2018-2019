@@ -32,7 +32,7 @@ public class TaurusHardwareMap {
         dropServo = hwMap.servo.get("ds");
 
         //Set motors to reverse so all motors turn the same direction.
-        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //Ensure all motors are set to zero power.
         rightMotor.setPower(0);
@@ -43,8 +43,8 @@ public class TaurusHardwareMap {
     //Function in charge of moving motors in TeleOp.
     public void driveControls() {
 
-        rightMotor.setPower(rightPower);
-        leftMotor.setPower(leftPower);
+        rightMotor.setPower(leftPower);
+        leftMotor.setPower(rightPower);
 
         winchMotor.setPower(winchPower);
     }
