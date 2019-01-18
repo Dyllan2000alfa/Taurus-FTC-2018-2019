@@ -31,7 +31,6 @@ public class TaurusTeleTest extends OpMode{
         robot.rightPower = -gamepad1.right_stick_y;
         robot.leftPower = -gamepad1.left_stick_y;
 
-
         robot.winchPower = gamepad1.right_trigger - gamepad1.left_trigger;
 
         //Run driveControls() function from hardware map. Contains code for moving motors.

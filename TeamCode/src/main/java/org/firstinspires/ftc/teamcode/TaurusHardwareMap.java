@@ -17,10 +17,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class TaurusHardwareMap {
 
     //Add all motors and variables used by any program.
-    DcMotor rightMotor, leftMotor, winchMotor;
+    DcMotor rightMotor, leftMotor, winchMotorUp, winchMotorDown;
     Servo dropServo;
     double leftPower = 0, rightPower = 0, winchPower = 0, speed = 1;
-    boolean direction = false, toggleReady = false, G1b;
 
     //Specify what to run when initializing hardware map.
     public void init(HardwareMap hwMap) {
@@ -28,25 +27,28 @@ public class TaurusHardwareMap {
         //Specify names of all motors as seen by phones.
         rightMotor = hwMap.dcMotor.get("rm");
         leftMotor = hwMap.dcMotor.get("lm");
-        winchMotor = hwMap.dcMotor.get("wm");
+        winchMotorDown = hwMap.dcMotor.get("wmd");
+        winchMotorUp = hwMap.dcMotor.get("wmu");
         dropServo = hwMap.servo.get("ds");
 
         //Set motors to reverse so all motors turn the same direction.
-        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //Ensure all motors are set to zero power.
         rightMotor.setPower(0);
         leftMotor.setPower(0);
-        winchMotor.setPower(0);
+        winchMotorDown.setPower(0);
+        winchMotorUp.setPower(0);
     }
 
     //Function in charge of moving motors in TeleOp.
     public void driveControls() {
 
-        rightMotor.setPower(leftPower);
-        leftMotor.setPower(rightPower);
+        rightMotor.setPower(rightPower);
+        leftMotor.setPower(leftPower);
 
-        winchMotor.setPower(winchPower);
+        winchMotorUp.setPower(winchPower);
+        winchMotorDown.setPower(winchPower);
     }
 
     //Function to move robot forward at set speed.
@@ -80,13 +82,15 @@ public class TaurusHardwareMap {
     //Function to move arm up at quarter speed
     public void liftUp() {
 
-        winchMotor.setPower(.25);
+        winchMotorUp.setPower(.25);
+        winchMotorDown.setPower(.25);
     }
 
     //Function to move arm down at quarter speed
     public void liftDown() {
 
-        winchMotor.setPower(-.25);
+        winchMotorUp.setPower(-.25);
+        winchMotorDown.setPower(-.25);
     }
 
     //Function to stop all motors
@@ -94,7 +98,8 @@ public class TaurusHardwareMap {
 
         rightMotor.setPower(0);
         leftMotor.setPower(0);
-        winchMotor.setPower(0);
+        winchMotorUp.setPower(0);
+        winchMotorDown.setPower(0);
         dropServo.setPosition(1);
     }
 
